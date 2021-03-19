@@ -1,13 +1,8 @@
 #!/bin/bash
-# A script to deploy CloudGuard on OpenShift by Jayden Aung
+# Script to Create User
 
-# Update this with your namespace
-myns="mynamespace"
+#Create Admin User
+oc create -f uid1000.json --as system:admin
 
-# Create Cluster Role
-oc create clusterrole cp-resource-management \
---verb=get,list \
---resource=pods,nodes,services,nodes/proxy,networkpolicies.networking.k8s.io,ingresses.extensions,podsecuritypolicies,roles,rolebindings,clusterroles,clusterrolebindings,serviceaccounts,namespaces
-
-# Deploy CloudGuard 
-oc create -f cp-cloudguard-openshift.yaml --namespace=$myns
+# Policy Add User
+oc adm policy add-scc-to-user uid1000 -z cp-resource-management --as system:admin

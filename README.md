@@ -19,6 +19,8 @@ git clone git@github.com:chkp-dhouari/cloudguard-OpenShift.git
 
 ### Run the following command (only for new namespace)
 
+You can edit the variables and run [prereq-2.sh](prereq-2.sh) or execute the following commands manually. 
+
 ```
 oc create namespace
 ```
@@ -98,7 +100,7 @@ securitycontextconstraints "uid1000" created
 
 ```
 
-**Or you can execute [prereq-1.sh](prereq-1.sh)**
+**Or you can execute [prereq-2.sh](prereq-2.sh)**
 
 ### Set the SCC to be used by the cloudguard service account that we already created 
 

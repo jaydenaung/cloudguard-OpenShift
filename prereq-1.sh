@@ -1,8 +1,32 @@
 #!/bin/bash
-# Script to Create User
+# A script to create PreRequisite part 1 by Jayden Aung
 
-#Create Admin User
-oc create -f uid1000.json --as system:admin
+# Your CloudGuard ID
+CHKP_CLOUDGUARD_API="your-cloudguard-api"
+CHKP_CLOUDGUARD_SECRET="your-cloudguard-secret"
 
-# Policy Add User
-oc adm policy add-scc-to-user uid1000 -z cp-resource-management --as system:admin
+# Your namespace 
+namespace="myns"
+
+#Cluster
+clusterid="mycluster"
+
+# Create your name space
+oc create namespace $myns
+
+# Generate secret
+oc create secret generic dome9-creds \
+--from-literal=username=$CHKP_CLOUDGUARD_API \
+--from-literal=secret=$CHKP_CLOUDGUARD_SECRET \
+--namespace $myns
+
+# Create Configmap
+
+oc create configmap cp-resource-management-configmap \
+--from-literal=cluster.id=,$clusterid --namespace $myns
+
+# Create Services account
+oc create serviceaccount cp-resource-management --namespace $myns
+
+echo Service Account "${myns}" has been created. 
+
