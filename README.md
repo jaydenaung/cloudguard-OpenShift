@@ -17,7 +17,7 @@ Please go to the CloudGuard asset onboarding page in cloudguard then pick Kubern
 git clone https://github.com/jaydenaung/cloudguard-OpenShift
 ```
 
-## Using bash shell script to onboard (Jayden)
+## Using bash shell script to automate the onboarding process (Jayden)
 
 In this repository, there are two scripts that you can use to automate onboarding.
 
