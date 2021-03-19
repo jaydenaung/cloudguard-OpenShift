@@ -39,6 +39,12 @@ oc create serviceaccount cp-resource-management --namespace $myns
 
 echo Service Account "${myns}" has been created. 
 
+#Create Admin User. Make sure uid1000.json is in the same directory.
+oc create -f uid1000.json --as system:admin
+
+# Policy Add User
+oc adm policy add-scc-to-user uid1000 -z cp-resource-management --as system:admin
+
 # Create Cluster role
 oc create clusterrole cp-resource-management \
 --verb=get,list \
