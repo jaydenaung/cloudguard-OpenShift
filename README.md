@@ -129,7 +129,7 @@ then next and wait for agent to be synced
 # Start running Governance on your OpenShift cluster with CloudGuard
 
   
-![header image](cg.jpeg)  
+![header image](cg.png)  
 
 ---
 Note: Will be adding bash script for the onboarding.
