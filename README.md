@@ -94,13 +94,14 @@ oc create serviceaccount cp-resource-management --namespace <your_namespace>
 
 ### Need to create a new SCC for CloudGuard, you need to be an administrator.
 
+You can run [prereq-2.sh](prereq-2.sh) or execute the following commands.
+
 ```
 oc create -f uid1000.json --as system:admin
 securitycontextconstraints "uid1000" created
 
 ```
 
-**Or you can execute [prereq-2.sh](prereq-2.sh)**
 
 ### Set the SCC to be used by the cloudguard service account that we already created 
 
@@ -109,6 +110,8 @@ oc adm policy add-scc-to-user uid1000 -z cp-resource-management --as system:admi
 ```
 
 ### Run the following commands
+
+You can edit the variables and run [prereq-3.sh](prereq-3.sh) or execute the following commands.
 ```
 oc create clusterrole cp-resource-management --verb=get,list --resource=pods,nodes,services,nodes/proxy,networkpolicies.networking.k8s.io,ingresses.extensions,podsecuritypolicies,roles,rolebindings,clusterroles,clusterrolebindings,serviceaccounts,namespaces
 ```
@@ -116,7 +119,7 @@ oc create clusterrole cp-resource-management --verb=get,list --resource=pods,nod
 ```
 oc create clusterrolebinding cp-resource-management --clusterrole=cp-resource-management --serviceaccount=prod:cp-resource-management
 ```
-**Or you can execute [prereq-2.sh](prereq-2.sh)**
+
 
 ### Deploy CloudGuard agent
 
