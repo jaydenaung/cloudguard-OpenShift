@@ -1,5 +1,6 @@
 #!/bin/bash
-# A script to create PreRequisite part 1 by Jayden Aung
+# A script to onboard OpenShift cluster to CloudGuard
+# Author: Jayden Kyaw Htet Aung (Regional Cloud & DevSecOps Architect, Check Point)
 
 # Name of your cluster that will appear on CloudGuard portal. Update this value.
 cluster_name="mycluster"
@@ -19,7 +20,6 @@ CREATION_RESPONSE=$(curl -s -X POST $dome9ApiUrl/v2/KubernetesAccount --header '
 
 export cluster_id=$(echo $CREATION_RESPONSE | jq -r '.id')
 
-
 # Create your name space
 oc create namespace $myns
 
@@ -38,4 +38,20 @@ oc create configmap cp-resource-management-configmap \
 oc create serviceaccount cp-resource-management --namespace $myns
 
 echo Service Account "${myns}" has been created. 
+
+# Create Cluster role
+oc create clusterrole cp-resource-management \
+--verb=get,list \
+--resource=pods,nodes,services,nodes/proxy,networkpolicies.networking.k8s.io,ingresses.extensions,podsecuritypolicies,roles,rolebindings,clusterroles,clusterrolebindings,serviceaccounts,namespaces
+
+# Clusterrole binding
+oc create clusterrolebinding cp-resource-management \
+--clusterrole=cp-resource-management \
+--serviceaccount=prod:cp-resource-management
+
+# Deploy CloudGuard 
+oc create -f cp-cloudguard-openshift.yaml --namespace=$myns
+
+echo Cluster onboarding has been finished. 
+
 

@@ -17,9 +17,18 @@ Please go to the CloudGuard asset onboarding page in cloudguard then pick Kubern
 git clone https://github.com/jaydenaung/cloudguard-OpenShift
 ```
 
-### Run the following command (only for new namespace)
+## Using bash shell script to onboard (Jayden)
 
-You can edit the variables and run [onboard-1.sh](onboard-1.sh) or execute the following commands manually. 
+In this repository, there are two scripts that you can use to automate onboarding.
+
+1. Execute [prereq.sh](prereq.sh) for creating prerequisites. 
+2. Edit variables and run [onboard-1.sh](onboard-1.sh) to onboard the cluster. 
+
+Alternatively, you can follow the instructions below and execute command lines manually. 
+
+---
+
+### Run the following command (only for new namespace)
 
 ```
 oc create namespace
@@ -94,7 +103,6 @@ oc create serviceaccount cp-resource-management --namespace <your_namespace>
 
 ### Need to create a new SCC for CloudGuard, you need to be an administrator.
 
-You can run [onboard-2.sh](onboard-2.sh) or execute the following commands.
 
 ```
 oc create -f uid1000.json --as system:admin
@@ -111,7 +119,6 @@ oc adm policy add-scc-to-user uid1000 -z cp-resource-management --as system:admi
 
 ### Run the following commands
 
-You can edit the variables and run [onboard-3.sh](onboard-3.sh) or execute the following commands.
 ```
 oc create clusterrole cp-resource-management --verb=get,list --resource=pods,nodes,services,nodes/proxy,networkpolicies.networking.k8s.io,ingresses.extensions,podsecuritypolicies,roles,rolebindings,clusterroles,clusterrolebindings,serviceaccounts,namespaces
 ```
@@ -132,7 +139,4 @@ then next and wait for agent to be synced
 # Start running Governance on your OpenShift cluster with CloudGuard
 
   
-![header image](cg.png)  
-
----
-Note: Will be adding bash script for the onboarding.
+![header image](img/cg.png)  
