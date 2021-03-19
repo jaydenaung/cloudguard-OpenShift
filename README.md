@@ -19,7 +19,7 @@ git clone https://github.com/jaydenaung/cloudguard-OpenShift
 
 ### Run the following command (only for new namespace)
 
-You can edit the variables and run [prereq-2.sh](prereq-2.sh) or execute the following commands manually. 
+You can edit the variables and run [prereq-1.sh](prereq-1.sh) or execute the following commands manually. 
 
 ```
 oc create namespace
