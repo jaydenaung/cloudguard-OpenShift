@@ -124,3 +124,6 @@ then next and wait for agent to be synced
 
   
 ![header image](cg.jpeg)  
+
+---
+Note: Will be adding bash script for the onboarding.
