@@ -98,7 +98,7 @@ securitycontextconstraints "uid1000" created
 
 ```
 
-Or execute [prereq-1.sh](prereq-1.sh)
+**Or you can execute [prereq-1.sh](prereq-1.sh)**
 
 ### Set the SCC to be used by the cloudguard service account that we already created 
 
@@ -114,7 +114,7 @@ oc create clusterrole cp-resource-management --verb=get,list --resource=pods,nod
 ```
 oc create clusterrolebinding cp-resource-management --clusterrole=cp-resource-management --serviceaccount=prod:cp-resource-management
 ```
-[prereq-2.sh](prereq-2.sh)
+**Or you can execute [prereq-2.sh](prereq-2.sh)**
 
 ### Deploy CloudGuard agent
 
