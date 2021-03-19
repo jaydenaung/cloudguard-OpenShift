@@ -1,6 +1,6 @@
 # Onboarding an Openshift cluster to Check Point Cloudguard CSPM (ex.Dome9)
 
-![header image](opens.png)                            ![header image](cg.png) 
+![header image](img/opens.png)                            ![header image](img/cg.png) 
 
 
 Please go to the CloudGuard asset onboarding page in cloudguard then pick Kubernetes...enter the cluster name, namespace name and your cloudguard API token then click next && pick an organization then next && then STOP... 
@@ -19,7 +19,7 @@ git clone https://github.com/jaydenaung/cloudguard-OpenShift
 
 ### Run the following command (only for new namespace)
 
-You can edit the variables and run [prereq-1.sh](prereq-1.sh) or execute the following commands manually. 
+You can edit the variables and run [onboard-1.sh](onboard-1.sh) or execute the following commands manually. 
 
 ```
 oc create namespace
@@ -94,7 +94,7 @@ oc create serviceaccount cp-resource-management --namespace <your_namespace>
 
 ### Need to create a new SCC for CloudGuard, you need to be an administrator.
 
-You can run [prereq-2.sh](prereq-2.sh) or execute the following commands.
+You can run [onboard-2.sh](onboard-2.sh) or execute the following commands.
 
 ```
 oc create -f uid1000.json --as system:admin
@@ -111,7 +111,7 @@ oc adm policy add-scc-to-user uid1000 -z cp-resource-management --as system:admi
 
 ### Run the following commands
 
-You can edit the variables and run [prereq-3.sh](prereq-3.sh) or execute the following commands.
+You can edit the variables and run [onboard-3.sh](onboard-3.sh) or execute the following commands.
 ```
 oc create clusterrole cp-resource-management --verb=get,list --resource=pods,nodes,services,nodes/proxy,networkpolicies.networking.k8s.io,ingresses.extensions,podsecuritypolicies,roles,rolebindings,clusterroles,clusterrolebindings,serviceaccounts,namespaces
 ```
