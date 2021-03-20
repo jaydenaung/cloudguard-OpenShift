@@ -2,15 +2,13 @@
 
 ![header image](img/opens.png)                            ![header image](img/cg.png) 
 
+This tutorial details how to onboard Openshift cluster to CloudGuard native. 
 
-Please go to the CloudGuard asset onboarding page in cloudguard then pick Kubernetes...enter the cluster name, namespace name and your cloudguard API token then click next && pick an organization then next && then STOP... 
+## Prerequisites 
 
-#### Enter the command below in your openshift cluster:
+* Register for a CloudGuard native account. https://secure.dome9.com/v2/register/invite
+* Generate CloudGuard API key and secret here https://secure.dome9.com/v2/settings/credentials 
 
-
-> IMPORTANT: Please do NOT use the Helm charts or manual option kubectl comnands as this is for OpenShift which uses oc command to manage the K8s cluster. Openshift implementation has different values with regards to deployments config paramaters vs traditional K8s. The deployment file and some other commands had to be customized for OpenShift
-
-#### Please install Git to clone the repo and download the deployment config yaml file and the UID1000.json file for OpenShift
 
 ### Run the following command:
 ```
@@ -19,7 +17,6 @@ git clone https://github.com/jaydenaung/cloudguard-OpenShift
 
 ## Using bash shell script to automate the onboarding process (Jayden)
 
-In this repository, there are two scripts that you can use to automate onboarding.
 
 1. Make sure that [uid1000.json](uid1000.json) is in the same directory as [onboard-1.sh](onboard-1.sh). 
 2. Edit variables and run [onboard-1.sh](onboard-1.sh) to onboard the cluster. 
