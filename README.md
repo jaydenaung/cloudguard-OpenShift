@@ -18,8 +18,13 @@ git clone https://github.com/jaydenaung/cloudguard-OpenShift
 ## Using bash shell script to automate the onboarding process (Jayden)
 
 
-1. Make sure that [uid1000.json](uid1000.json) is in the same directory as [onboard-1.sh](onboard-1.sh). 
+1. ake sure that [uid1000.json](uid1000.json) and [cp-cloudguard-openshift.yaml](cp-cloudguard-openshift.yaml) are in the same directory as [onboard-1.sh](onboard-1.sh). 
 2. Edit variables and run [onboard-1.sh](onboard-1.sh) to onboard the cluster. 
+
+```
+    chmod +x onboard-1.sh
+    ./onboard-1.sh
+```
 
 Alternatively, you can follow the instructions below and execute command lines manually. 
 
